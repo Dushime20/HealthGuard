@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public interface IVaccinationCites {
 
-    Response addVaccinationCites(Long vaccinationCiteId, String name, String location, int availability, String contact_info, LocalDateTime updated_at);
+    Response addVaccinationCites(Long userId, String name, String citeDistrict, String citeSector,String citeCell, int availability, String contact_info, LocalDateTime updated_at);
 
     Response getAllVaccinationCite();
 
