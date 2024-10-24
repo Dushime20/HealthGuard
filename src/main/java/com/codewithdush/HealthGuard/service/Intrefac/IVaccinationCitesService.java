@@ -4,7 +4,7 @@ import com.codewithdush.HealthGuard.Dto.Response;
 
 import java.time.LocalDateTime;
 
-public interface IVaccinationCites {
+public interface IVaccinationCitesService {
 
     Response addVaccinationCites(Long userId, String name, String citeDistrict, String citeSector,String citeCell, int availability, String contact_info, LocalDateTime updated_at);
 
@@ -12,7 +12,7 @@ public interface IVaccinationCites {
 
     Response getVaccinationCiteByTime(LocalDateTime updated_at);
 
-    Response getVaccinationCiteByCiteName(String name);
+    Response getVaccinationCiteByCiteName(String district, String sector,String cell);
 
     Response deleteVaccinationCite(Long vaccinationCiteId);
 }

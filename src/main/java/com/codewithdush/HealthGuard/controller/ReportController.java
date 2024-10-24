@@ -2,6 +2,7 @@ package com.codewithdush.HealthGuard.controller;
 
 
 import com.codewithdush.HealthGuard.Dto.Response;
+import com.codewithdush.HealthGuard.request.ReportRequest;
 import com.codewithdush.HealthGuard.service.Intrefac.IReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,11 +21,9 @@ public class ReportController {
     @PostMapping("/add/{userId}")
     public ResponseEntity<Response> createReport(
             @PathVariable Long userId,
-            @RequestParam(value = "reportType") String reportType,
-            @RequestParam(value = "description") String description,
-            @RequestParam(value = "status") String status
-    ) {
-        Response response = reportService.createReport(reportType, description, userId, status, null, null);
+            @RequestBody ReportRequest reportRequest
+            ) {
+        Response response = reportService.createReport(reportRequest.getReportType(), reportRequest.getDescription(), userId, reportRequest.getStatus(), null, null);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 

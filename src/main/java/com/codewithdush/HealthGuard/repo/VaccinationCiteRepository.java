@@ -12,5 +12,5 @@ import java.util.List;
 public interface VaccinationCiteRepository extends JpaRepository<VaccinationSites, Long> {
 
 
-    List<VaccinationSites> findAllByName(String name);
+    List<VaccinationSites> findAllByCiteDistrictAndCiteSectorAndCiteCell( String citeDistrict, String citeSector, String citeCell);
 }

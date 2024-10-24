@@ -13,12 +13,28 @@ public interface VaccinationRepository extends JpaRepository<Vaccinations, Long>
 
    // List<Vaccinations> findByUserId(Long userId);
 
-    @Query("SELECT v FROM Vaccinations v JOIN v.user u WHERE u.cell = :cell")
-    List<Vaccinations> findByUserCell(@Param("cell") String cell);
+    @Query("SELECT v FROM Vaccinations v WHERE v.recipientDistrict = :district AND v.recipientSector = :sector AND v.recipientCell = :cell")
+    List<Vaccinations> findByRecipientSectorAndDistrictAndCell(@Param("cell") String cell,
 
-    @Query("SELECT v FROM Vaccinations v JOIN v.user u WHERE u.sector = :sector")
-    List<Vaccinations> findByUserSector(@Param("sector") String sector);
+                                      @Param("district") String district,
+                                      @Param("sector") String sector);
 
-    @Query("SELECT v FROM Vaccinations v JOIN v.user u WHERE u.village = :village")
-    List<Vaccinations> findByUserVillage(@Param("village") String village);
+    @Query("SELECT v FROM Vaccinations v WHERE v.recipientDistrict = :district AND v.recipientSector = :sector")
+    List<Vaccinations> findByRecipientSectorAndDistrict(@Param("sector") String sector,
+                                                        @Param("district") String district);
+
+    @Query("SELECT v FROM Vaccinations v WHERE v.recipientDistrict = :district")
+    List<Vaccinations> findByRecipientDistrict(@Param("district") String district);
+
+
+    @Query("SELECT v FROM Vaccinations v WHERE v.recipientVillage = :village AND v.recipientDistrict = :district AND v.recipientSector = :sector AND v.recipientCell = :cell")
+    List<Vaccinations> findByRecipientVillageAndDistrictAndSectorAndCell(
+            @Param("village") String village,
+            @Param("district") String district,
+            @Param("sector") String sector,
+            @Param("cell") String cell
+    );
+
+
+
 }

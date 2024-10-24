@@ -1,5 +1,6 @@
 package com.codewithdush.HealthGuard.Dto;
 
+import com.codewithdush.HealthGuard.entity.User;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
@@ -20,9 +21,14 @@ public class VaccinationSitesDto {
     private String name;
 
 
-    private String location;
+    private String citeDistrict;
+
+    private String citeSector;
+    private String citeCell;
 
     private int availability;
+
+    private User user;
 
     private String contactInfo;
 

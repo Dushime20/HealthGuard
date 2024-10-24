@@ -81,6 +81,7 @@ public class UserService implements IUserService {
             response.setRole(user.getRole());
             response.setExpirationTime("7 days");
             response.setMessage("login successful");
+          //  System.out.println("user role"+user.getRole());
 
         }catch (OurException e){
             response.setStatusCode(400);

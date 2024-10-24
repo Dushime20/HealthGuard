@@ -34,7 +34,7 @@ public class CampaignController {
         LocalDateTime updatedAt = campaignRequest.getUpdatedAt();
 
         // Call the service method with individual parameters
-        Response response = campaignService.createCampaign(title, address, description, startDate, endDate, userId, updatedAt);
+        Response response = campaignService.createCampaign(userId,title, address, description, startDate, endDate, updatedAt);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 

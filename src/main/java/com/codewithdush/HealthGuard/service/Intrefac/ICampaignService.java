@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 public interface ICampaignService{
 
-    Response createCampaign(String title,String address ,String description, LocalDateTime startDate, LocalDateTime endDate, Long userId,LocalDateTime updatedAt);
+    Response createCampaign(Long userId,String title,String address ,String description, LocalDateTime startDate, LocalDateTime endDate,LocalDateTime updatedAt);
     Response getAllCampaign();
     Response getCampaignBYId(Long campaignId);
     Response getCampaignByStartingDateAndAddress(LocalDateTime startDate, String address);

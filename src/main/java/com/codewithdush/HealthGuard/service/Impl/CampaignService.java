@@ -32,7 +32,7 @@ public class CampaignService implements ICampaignService {
     private UserRepository userRepository;
 
     @Override
-    public Response createCampaign(String title, String address, String description, LocalDateTime startDate, LocalDateTime endDate, Long userId, LocalDateTime updatedAt) {
+    public Response createCampaign(Long userId,String title, String address, String description, LocalDateTime startDate, LocalDateTime endDate, LocalDateTime updatedAt) {
         Response response = new Response();
         try {
             User user = userRepository.findById(userId).orElseThrow(() -> new OurException("User not found"));
@@ -56,10 +56,12 @@ public class CampaignService implements ICampaignService {
             response.setMessage("Success");
             response.setCampaigns(campaignsDto);
 
-        } catch (OurException e) {
+        }
+        catch (OurException e) {
             response.setStatusCode(404);
             response.setMessage(e.getMessage());
-        } catch (Exception e) {
+        }
+        catch (Exception e) {
             response.setStatusCode(500);
             response.setMessage("Error creating campaign: " + e.getMessage());
         }

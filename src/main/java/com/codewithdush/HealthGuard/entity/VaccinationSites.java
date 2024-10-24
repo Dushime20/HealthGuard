@@ -1,5 +1,6 @@
 package com.codewithdush.HealthGuard.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
@@ -20,8 +21,20 @@ public class VaccinationSites {
     @NotBlank(message = "Name is mandatory")
     private String name;
 
-    @NotBlank(message = "Location is mandatory")
-    private String location;
+    @NotBlank(message = "citeDistrict is mandatory")
+    private String citeDistrict;
+
+    @NotBlank(message = "citeSector is mandatory")
+    private String citeSector;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
+    private User user;
+
+    @NotBlank(message = "citeCell is mandatory")
+    private String citeCell;
+
 
     private int availability;
 
