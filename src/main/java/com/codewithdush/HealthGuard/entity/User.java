@@ -38,7 +38,7 @@ public class User implements UserDetails {
     private String password;
 
     @NotBlank(message = "Role is mandatory")
-    @Pattern(regexp = "General Gublic|Health Professional|Community Leaders", message = "Role must be General public, Health Professional, or Community Leader")
+    @Pattern(regexp = "General Public|Health Professional|Community Leaders", message = "Role must be General public, Health Professional, or Community Leader")
     private String role;
 
     @NotBlank(message = "Phone number is mandatory")

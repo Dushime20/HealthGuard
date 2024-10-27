@@ -23,7 +23,7 @@ public class ReportController {
             @PathVariable Long userId,
             @RequestBody ReportRequest reportRequest
             ) {
-        Response response = reportService.createReport(reportRequest.getReportType(), reportRequest.getDescription(), userId, reportRequest.getStatus(), null, null);
+        Response response = reportService.createReport(reportRequest.getReportType(), reportRequest.getDescription(), userId, reportRequest.getStatus(),reportRequest.getAddress(), null, null);
         return ResponseEntity.status(response.getStatusCode()).body(response);
     }
 

@@ -14,6 +14,9 @@ public class ReportRequest {
     @NotBlank(message = "Status is mandatory")
     private String status;
 
+    @NotBlank(message = "Address is mandatory")
+    private String address;
+
     // Getters and Setters
 }
 

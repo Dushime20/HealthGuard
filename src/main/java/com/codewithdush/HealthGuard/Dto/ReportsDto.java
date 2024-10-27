@@ -26,6 +26,7 @@ public class ReportsDto {
 
 
     private String status;
+    private String address;
 
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

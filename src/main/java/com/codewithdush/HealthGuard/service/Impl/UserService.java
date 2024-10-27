@@ -52,6 +52,12 @@ public class UserService implements IUserService {
             if(userRepository.existsByEmail(user.getEmail())){
                 throw new OurException(user.getEmail() + "Already exist");
             }
+
+            // Set role to "General Public" if it's null or empty
+            if (user.getRole() == null || user.getRole().isBlank()) {
+                user.setRole("General Public");
+            }
+
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             User savedUser = userRepository.save(user);
             UserDto userDto = modelMapper.map(savedUser, UserDto.class);
@@ -79,6 +85,7 @@ public class UserService implements IUserService {
             response.setStatusCode(200);
             response.setToken(token);
             response.setRole(user.getRole());
+            response.setUserId(user.getUserId());
             response.setExpirationTime("7 days");
             response.setMessage("login successful");
           //  System.out.println("user role"+user.getRole());

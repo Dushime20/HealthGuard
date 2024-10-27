@@ -22,12 +22,27 @@ public class EducationalResource {
     @NotBlank(message = "Title is mandatory")
     private String title;
 
-    @Enumerated(EnumType.STRING)
+
     @NotBlank(message = "Content type is mandatory")
-    private ContentType contentType;
+    private String contentType;
+
+    @Override
+    public String toString() {
+        return "EducationalResource{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", contentType='" + contentType + '\'' +
+                ", url='" + url + '\'' +
+                ", description='" + description + '\'' +
+                ", createdAt=" + createdAt +
+                '}';
+    }
 
     @NotBlank(message = "URL is mandatory")
     private String url;
+
+    @NotBlank(message = "description is mandatory")
+    private String description;
 
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -37,10 +52,6 @@ public class EducationalResource {
         createdAt = LocalDateTime.now();
     }
 
-    public enum ContentType {
-        ARTICLE,
-        VIDEO,
-        INFOGRAPHIC
-    }
+
 }
 

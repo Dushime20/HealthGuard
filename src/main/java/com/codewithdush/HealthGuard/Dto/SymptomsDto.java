@@ -28,4 +28,6 @@ public class SymptomsDto {
 
     private LocalDateTime submittedAt;
 
+    private String description;
+
 }

@@ -19,7 +19,9 @@ public class EducationalResourceDto {
 
     private String title;
 
-    private EducationalResource.ContentType contentType;
+    private String contentType;
+
+    private String description;
 
 
     private String url;

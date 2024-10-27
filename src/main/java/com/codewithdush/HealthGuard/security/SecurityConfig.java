@@ -35,7 +35,7 @@ public class SecurityConfig {
         httpSecurity.csrf(AbstractHttpConfigurer::disable)
                 .cors(Customizer.withDefaults())
                 .authorizeHttpRequests(request ->request
-                        .requestMatchers("/auth/**","/campaign/all","/campaign/get_campaign_by_date_and_location").permitAll()
+                        .requestMatchers("/auth/**","/campaign/all","/vaccinationCite/get_cite_by_name","/vaccinationCite/all").permitAll()
                         .anyRequest().authenticated())
                 .sessionManagement(manager -> manager.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())

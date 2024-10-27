@@ -37,6 +37,10 @@ public class Reports {
     @Column(name = "status")
     private String status;
 
+    @NotBlank(message = "Address is mandatory")
+    @Column(name = "address")
+    private String address;
+
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 

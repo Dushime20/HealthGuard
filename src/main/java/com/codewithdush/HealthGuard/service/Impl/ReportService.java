@@ -34,7 +34,7 @@ public class ReportService implements IReportService {
     private ModelMapper modelMapper;
 
     @Override
-    public Response createReport(String reportType,String description, Long userId, String status, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public Response createReport(String reportType,String description, Long userId, String status,String address ,LocalDateTime createdAt, LocalDateTime updatedAt) {
 
 
         Response response = new Response();
@@ -42,9 +42,14 @@ public class ReportService implements IReportService {
 
             User user = userRepository.findById(userId).orElseThrow(()->new OurException("user not found"));
             Reports reports = new Reports();
+            // Set role to "General Public" if it's null or empty
+            if (reports.getStatus() == null || reports.getStatus().isBlank()){
+                reports.setStatus("pending");
+            }
             reports.setUser(user);
             reports.setReportType(reportType);
-            reports.setStatus(status);
+            reports.setAddress(address);
+
             reports.setDescription(description);
             reports.setCreatedAt(LocalDateTime.now());
             reports.setUpdatedAt(LocalDateTime.now());
@@ -146,6 +151,7 @@ public class ReportService implements IReportService {
         Response response = new Response();
         try{
          Reports reports =  reportRepository.findById(reportId).orElseThrow(()-> new OurException("report not found"));
+
          ReportsDto reportsDto = modelMapper.map(reports,ReportsDto.class);
 
             response.setStatusCode(200);

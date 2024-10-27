@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 
 public interface IReportService {
 
-    Response createReport(String reportType,String description, Long userId, String status, LocalDateTime createdAt,LocalDateTime updatedAt);
+    Response createReport(String reportType,String description, Long userId, String status,String address, LocalDateTime createdAt,LocalDateTime updatedAt);
     Response getAllReports();
     Response findReportByReportType(String reportType);
     Response deleteReport(Long reportId);
