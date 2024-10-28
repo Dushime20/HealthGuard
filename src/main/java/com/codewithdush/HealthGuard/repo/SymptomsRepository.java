@@ -11,6 +11,5 @@ import java.util.List;
 @Repository
 public interface SymptomsRepository extends JpaRepository<Symptoms, Long> {
 
-//    @Query("SELECT s FROM Symptoms s WHERE s.user.id = :userId")
-//    List<Symptoms> findSymptomsByUserId(@Param("userId") Long userId);
+
 }

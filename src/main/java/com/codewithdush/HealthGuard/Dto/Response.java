@@ -31,4 +31,7 @@ public class Response {
     private EducationalResourceDto educationalResourceDto;
     private List<EducationalResourceDto>educationalResourceDtoList;
 
+    private AdviceDto advice;
+
+
 }
